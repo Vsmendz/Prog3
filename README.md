@@ -10,10 +10,7 @@ O objetivo desta disciplina é aprofundar os conhecimentos em Programação Orie
 
 ### **Tecnologias Principais**
 
-* **Java (JDK 17+)**  
-* **JavaFX / Swing** para interfaces gráficas  
-* **JDBC** para conectividade com bancos de dados  
-* **Maven** para gerenciamento de dependências  
+* **Java (JDK 17+)**   
 * **Git / GitHub** para controle de versão
 
 ## **📝 Ementa do Curso**
