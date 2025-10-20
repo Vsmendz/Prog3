@@ -20,13 +20,9 @@ O objetivo desta disciplina é aprofundar os conhecimentos em Programação Orie
    * Classes Abstratas e Interfaces.  
 2. **Tópicos Avançados de Java**  
    * Tratamento de Exceções (Checked vs. Unchecked).  
-   * Java Collections Framework (Listas, Filas, Mapas, Conjuntos).  
-   * Programação Funcional com Streams e Lambdas.  
-   * Manipulação de Arquivos e Serialização de Objetos.  
+   * Java Collections Framework (Listas, Filas, Mapas, Conjuntos).   
 3. **Desenvolvimento de Interfaces Gráficas (GUI)**  
-   * Introdução ao JavaFX ou Swing.  
    * Gerenciamento de Layouts e Componentes Visuais.  
-   * Arquitetura MVC (Model-View-Controller) aplicada a GUIs.  
    * Tratamento de Eventos.
 
 ## **🛠️ Ferramentas Necessárias**
