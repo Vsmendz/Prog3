@@ -1,4 +1,4 @@
-package semana5.atv1;
+package Aulas.semana7.atv1;
 
 import java.util.*;
 public class Atv1 {
