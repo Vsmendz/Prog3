@@ -62,7 +62,6 @@ public class Main {
                     default:
                         ls.add(new Vendedor(atributos.get(1),Integer.parseInt(atributos.get(2)),
                         Double.parseDouble(atributos.get(3)),Double.parseDouble(atributos.get(4))));
-                        throw new AssertionError();
                 }
             }
         } catch (IOException e) {
