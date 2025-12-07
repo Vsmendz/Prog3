@@ -3,6 +3,7 @@ package Aulas.Trabalho;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -10,6 +11,12 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Funcionarios> ls = new ArrayList<>();
+        try {
+            load(ls);
+        } catch (FileNotFoundException e) {
+            System.err.println(e);
+        }
+        
         Menu.start(ls);
 
         try {
@@ -39,12 +46,27 @@ public class Main {
                     if (letra == ','){
                         atributos.add(instancia);
                         instancia = "";
+                        continue;
                     }
                     instancia += letra;
                 }
-                
+                switch (atributos.get(0)) {
+                    case "Gerente":
+                        ls.add(new Gerente(atributos.get(1),Integer.parseInt(atributos.get(2)),
+                        Double.parseDouble(atributos.get(3)),Double.parseDouble(atributos.get(4))));
+                        break;
+                    case "Estagiario":
+                        ls.add(new Estagiario(atributos.get(1),Integer.parseInt(atributos.get(2)),
+                        Double.parseDouble(atributos.get(3))));
+                        break;
+                    default:
+                        ls.add(new Vendedor(atributos.get(1),Integer.parseInt(atributos.get(2)),
+                        Double.parseDouble(atributos.get(3)),Double.parseDouble(atributos.get(4))));
+                        throw new AssertionError();
+                }
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
+            System.err.println(e);
         }
 
     }

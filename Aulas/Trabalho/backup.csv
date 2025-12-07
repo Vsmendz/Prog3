@@ -1,4 +1,1 @@
 Cargo,Nome,ID,Salario_Base,Unique,Salario_Total
-Gerente,f,2,2.0,2.0,4.0
-Estagiario,f,2,2.0,-1.0,2.0
-Estagiario,r,2,2.0,-1.0,2.0
