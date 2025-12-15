@@ -103,3 +103,19 @@ class Estagiario extends Funcionarios{
         return salario;
     }
 }
+
+class Diretor extends Funcionarios{
+    public Diretor(String nome,int id,double salario){
+    super(nome,id,salario);
+    }
+
+    @Override 
+    public String getCargo(){
+        return "Diretor";
+    }
+
+    @Override
+    public  double calcular_salario(){
+        return salario;
+    }
+}

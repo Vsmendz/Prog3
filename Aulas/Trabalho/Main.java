@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Main {
@@ -13,7 +12,7 @@ public class Main {
         ArrayList<Funcionarios> ls = new ArrayList<>();
         try {
             load(ls);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.err.println(e);
         }
         
@@ -33,8 +32,9 @@ public class Main {
             out.printf("%s,%s,%s,%s,%s,%s\n",func.getCargo(),func.getNome(),func.getMatricula(),
             func.getSalario(),func.getUnique(),func.calcular_salario());
         }
+        out.close();
     }
-    public static void load(ArrayList<Funcionarios> ls)throws FileNotFoundException{
+    public static void load(ArrayList<Funcionarios> ls)throws IOException{
         BufferedReader br = new BufferedReader(new FileReader("./Aulas/Trabalho/backup.csv"));
         try {
             br.readLine();
@@ -59,13 +59,19 @@ public class Main {
                         ls.add(new Estagiario(atributos.get(1),Integer.parseInt(atributos.get(2)),
                         Double.parseDouble(atributos.get(3))));
                         break;
+                    case "Diretor":
+                        ls.add(new Diretor(atributos.get(1),Integer.parseInt(atributos.get(2)),
+                        Double.parseDouble(atributos.get(3))));
+                        break;
                     default:
                         ls.add(new Vendedor(atributos.get(1),Integer.parseInt(atributos.get(2)),
                         Double.parseDouble(atributos.get(3)),Double.parseDouble(atributos.get(4))));
                 }
             }
+            br.close();
         } catch (IOException e) {
             System.err.println(e);
+            br.close();
         }
 
     }
