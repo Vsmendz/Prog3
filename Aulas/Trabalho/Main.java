@@ -16,13 +16,7 @@ public class Main {
             System.err.println(e);
         }
         
-        Menu.start(ls);
-
-        try {
-            save(ls);
-        } catch (FileNotFoundException e) {
-            System.err.println(e);
-        }
+        MenuGUI.start(ls);
 
     }
     public static void save(ArrayList<Funcionarios> ls)throws FileNotFoundException {
