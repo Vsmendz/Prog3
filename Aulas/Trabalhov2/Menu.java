@@ -1,9 +1,9 @@
-package Aulas.Trabalho;
+package Aulas.Trabalhov2;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Menu {
 
@@ -99,6 +99,7 @@ public class Menu {
                     break;
             }
             atualizarTabela();
+            JOptionPane.showMessageDialog(null,"Funcionario adicionado","bom dia",JOptionPane.INFORMATION_MESSAGE );
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(frame, "Dados inválidos: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }

@@ -1,4 +1,4 @@
-package Aulas.Trabalho;
+package Aulas.Trabalhov2;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

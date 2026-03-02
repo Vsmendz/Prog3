@@ -1,19 +1,20 @@
-package Aulas.Trabalho;
+package Aulas.Trabalhobdv2;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Menu {
 
-    private static ArrayList<Funcionarios> lista;
+    private static DAO FuncDao;
     private static DefaultTableModel tableModel;
     private static JTable tabela;
     private static JFrame frame;
 
-    public static void start(ArrayList<Funcionarios> ls) {
-        lista = ls;
+    public static void start() {
+        FuncDao = new DAO();
         frame = new JFrame("Funcionários");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 600);
@@ -29,7 +30,6 @@ public class Menu {
         // Botões
         JPanel botoes = new JPanel();
         JButton btnAdd = new JButton("Adicionar");
-        JButton btnAdd2222 = new JButton("test");
         JButton btnRemover = new JButton("Remover");
         JButton btnFolha = new JButton("Folha Total");
 
@@ -48,6 +48,7 @@ public class Menu {
 
     private static void atualizarTabela() {
         tableModel.setRowCount(0);
+        ArrayList<Funcionarios> lista = FuncDao.listar();
         for (Funcionarios f : lista) {
             tableModel.addRow(new Object[]{
                 f.getCargo(),
@@ -84,37 +85,60 @@ public class Menu {
             int i = Integer.parseInt(id.getText().trim());
             double s = Double.parseDouble(salario.getText().trim());
 
-            switch (c) {
-                case "Gerente":
-                    lista.add(new Gerente(n, i, s, Double.parseDouble(extra.getText().trim())));
-                    break;
-                case "Vendedor":
-                    lista.add(new Vendedor(n, i, s, Double.parseDouble(extra.getText().trim())));
-                    break;
-                case "Estagiario":
-                    lista.add(new Estagiario(n, i, s));
-                    break;
-                case "Diretor":
-                    lista.add(new Diretor(n, i, s));
-                    break;
-            }
+        switch (c) {
+
+            case "Gerente":
+                FuncDao.inserir(
+                    new Gerente(n, i, s,
+                        Double.parseDouble(extra.getText().trim()))
+                );
+                break;
+
+            case "Vendedor":
+                FuncDao.inserir(
+                    new Vendedor(n, i, s,
+                        Double.parseDouble(extra.getText().trim()))
+                );
+                break;
+
+            case "Estagiario":
+                FuncDao.inserir(
+                    new Estagiario(n, i, s)
+                );
+                break;
+
+            case "Diretor":
+                FuncDao.inserir(
+                    new Diretor(n, i, s)
+                );
+                break;
+        }
             atualizarTabela();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(frame, "Dados inválidos: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     private static void remover() {
+
         int row = tabela.getSelectedRow();
+
         if (row == -1) {
-            JOptionPane.showMessageDialog(frame, "Selecione um funcionário na tabela.");
+            JOptionPane.showMessageDialog(frame,
+                    "Selecione um funcionário na tabela.");
             return;
         }
-        lista.remove(row);
+
+        int id = Integer.parseInt(
+                tableModel.getValueAt(row, 2).toString()
+        );
+
+        FuncDao.remover(id);
+
         atualizarTabela();
     }
 
     private static void folha() {
+        ArrayList<Funcionarios> lista = FuncDao.listar();
         double total = 0;
         for (Funcionarios f : lista) {
             total += f.calcular_salario();

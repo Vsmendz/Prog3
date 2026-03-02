@@ -1,4 +1,4 @@
-package Aulas.Trabalhov2;
+package Aulas.Trabalhobdv2;
 
 public abstract class Funcionarios{
     protected String nome;
@@ -9,6 +9,9 @@ public abstract class Funcionarios{
         this.nome = nnome;
         this.matricula_id = id;
         this.salario = ssalario;
+    }
+    public int getId(){
+        return matricula_id;
     }
 
     public String getNome(){
